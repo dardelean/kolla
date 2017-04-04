@@ -151,6 +151,16 @@ kolla_internal_vip_address: "10.10.10.254"
 #enable_watcher: "no"
 #enable_nova-hyperv: "no"
 
+
+###################
+# Hyper-V options
+###################
+# Hyper-V can be used as hypervisor
+#hyperv_username: "user"
+#hyperv_password: "password"
+#vswitch_name: "vswitch"
+
+
 ###################
 # Ceph options
 ###################
