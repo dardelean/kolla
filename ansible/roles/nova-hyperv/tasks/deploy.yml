@@ -1,0 +1,9 @@
+---
+- include: bootstrap.yml
+  when: inventory_hostname in groups['nova-hyperv']
+
+- include: config.yml
+  when: inventory_hostname in groups['nova-hyperv']
+
+- include: start.yml
+  when: inventory_hostname in groups['nova-hyperv']

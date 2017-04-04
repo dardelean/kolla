@@ -1,0 +1,23 @@
+[DEFAULT]
+verbose=true
+control_exchange=neutron
+policy_file=C:\Program Files\Cloudbase Solutions\OpenStack\Nova\etc\policy.json
+rpc_backend=rabbit
+logdir=C:\OpenStack\Log
+logfile=neutron-hyperv-agent.log
+
+[AGENT]
+polling_interval=2
+physical_network_vswitch_mappings=*:{{ vswitch_name }}
+enable_metrics_collection=false
+worker_count=4
+
+[SECURITYGROUP]
+firewall_driver=neutron.plugins.hyperv.agent.security_groups_driver.HyperVSecurityGroupsDriver
+enable_security_group=true
+
+[oslo_messaging_rabbit]
+rabbit_host=transport_url ={% for host in groups['rabbitmq'] %}{{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}{% if not loop.last %},{% endif %}{% endfor %}
+rabbit_port={{ rabbitmq_port }}
+rabbit_userid={{ rabbitmq_user }
+rabbit_password={{ rabbitmq_password }}

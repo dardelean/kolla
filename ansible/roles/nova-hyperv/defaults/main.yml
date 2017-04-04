@@ -1,0 +1,9 @@
+---
+temp_dir: 'c:\ansible_temp'
+log_dir: 'c:\OpenStack\Log'
+base_download_url: 'https://cloudbase.it/downloads'
+hyperv_compute_msi: 'HyperVNovaCompute_Newton_14_0_1.msi'
+freerdp_webconnect_msi: 'FreeRDPWebConnect.msi'
+nova_conf_path: 'C:\Program Files\Cloudbase Solutions\OpenStack\Nova\etc\nova.conf'
+neutron_hyperv_agent_conf_path: 'C:\Program Files\Cloudbase Solutions\OpenStack\Nova\etc\neutron_hyperv_agent.conf'
+wsgate_ini_path: 'C:\Program Files\Cloudbase Solutions\FreeRDP-WebConnect\etc\wsgate.ini'

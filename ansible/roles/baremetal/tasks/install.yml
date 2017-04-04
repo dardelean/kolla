@@ -42,6 +42,11 @@
   easy_install: name=pip
   become: True
 
+- name: install pywinrm
+  pip: name=pywinrm version=">=0.2.2"
+  become: True
+  when: enable_nova-hyperv | bool
+
 - name: Install docker-py
   pip: name=docker-py state=latest
   become: True

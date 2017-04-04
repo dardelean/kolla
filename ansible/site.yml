@@ -153,6 +153,15 @@
         tags: nova,
         when: enable_nova | bool }
 
+- hosts:
+    - hyperv
+  serial: '{{ serial|default("0") }}'
+  roles:
+    - { role: nova-hyperv,
+        tags: nova-hyperv,
+        when: enable_nova-hyperv | bool }
+   
+
 # (gmmaha): Please do not change the order listed here. The current order is a
 # workaround to fix the bug https://bugs.launchpad.net/kolla/+bug/1546789
 - hosts:
