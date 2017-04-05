@@ -26,7 +26,8 @@ logfile=nova-compute.log
 force_config_drive=True
 
 [glance]
-api_servers = {% for host in groups['glance-api'] %}{{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}:{{ glance_api_port }}{% if not loop.last %},{% endif %}{% endfor %}
+api_servers={% for host in groups['glance-api'] %}{{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}:{{ glance_api_port }}{% if not loop.last %},{% endif %}{% endfor %}
+
 
 [hyperv]
 limit_cpu_features=false
@@ -41,18 +42,19 @@ enabled=true
 html5_proxy_base_url=http://{{ ansible_fqdn }}:8000
 
 [neutron]
-url = {{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ neutron_server_port }}
+url={{ internal_protocol }}://{{ kolla_internal_fqdn }}:{{ neutron_server_port }}
 auth_strategy=keystone
 project_domain_name=Default
 project_name=service
 user_domain_name=Default
-username = {{ neutron_keystone_user }}
-password = {{ neutron_keystone_password }}
-auth_url = {{ keystone_admin_url }}
+username={{ neutron_keystone_user }}
+password={{ neutron_keystone_password }}
+auth_url={{ keystone_admin_url }}
 auth_plugin=v3password
 
 [oslo_messaging_rabbit]
-rabbit_host=transport_url ={% for host in groups['rabbitmq'] %}{{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}{% if not loop.last %},{% endif %}{% endfor %}
+rabbit_host={% for host in groups['rabbitmq'] %}{{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}{% if not loop.last %},{% endif %}{% endfor %}
+
 rabbit_port={{ rabbitmq_port }}
-rabbit_userid={{ rabbitmq_user }
+rabbit_userid={{ rabbitmq_user }}
 rabbit_password={{ rabbitmq_password }}
