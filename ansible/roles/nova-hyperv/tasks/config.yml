@@ -1,28 +1,28 @@
 - name: Install the Compute MSI
   win_package:
-  path: "{{ temp_dir }}\\{{ hyperv_compute_msi }}"
-  product_id: '{520321AD-664C-49A1-A8CE-FAFB3C67FBF7}'
-  arguments: "SKIPNOVACONF=0"
+    path: "{{ temp_dir }}\\{{ hyperv_compute_msi }}"
+    product_id: '{520321AD-664C-49A1-A8CE-FAFB3C67FBF7}'
+    arguments: "SKIPNOVACONF=0"
 
 - name: Configure nova-compute
   win_template:
-  src: templates/nova.conf.j2
-  dest: "{{ nova_conf_path }}"
+    src: templates/nova.conf.j2
+    dest: "{{ nova_conf_path }}"
 
 - name: Configure neutron-hyperv-agent
   win_template:
-  src: templates/neutron_hyperv_agent.conf.j2
-  dest: "{{ neutron_hyperv_agent_conf_path }}"
+    src: templates/neutron_hyperv_agent.conf.j2
+    dest: "{{ neutron_hyperv_agent_conf_path }}"
 
 - name: Install the FreeRDP-WebConnect MSI
   win_package:
-  path: "{{ temp_dir }}\\{{ freerdp_webconnect_msi }}"
-  product_id: '{0935139D-41F6-40C1-A8C5-218DD93F8C76}'
+    path: "{{ temp_dir }}\\{{ freerdp_webconnect_msi }}"
+    product_id: '{0935139D-41F6-40C1-A8C5-218DD93F8C76}'
 
 - name: Configure FreeRDP-WebConnect
   win_template:
-  src: templates/wsgate.ini.j2
-  dest: "{{ wsgate_ini_path }}"
+    src: templates/wsgate.ini.j2
+    dest: "{{ wsgate_ini_path }}"
 
 - name: Remove temporary download directory
   win_command: "cmd /c rmdir /s /q {{temp_dir}}"

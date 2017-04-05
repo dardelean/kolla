@@ -17,10 +17,10 @@
 
 - name: Download the Nova MSI
   win_get_url:
-  url: "{{ base_download_url }}/{{ hyperv_compute_msi }}"
-  dest: "{{ temp_dir }}\\{{ hyperv_compute_msi }}"
+    url: "{{ base_download_url }}/{{ hyperv_compute_msi }}"
+    dest: "{{ temp_dir }}\\{{ hyperv_compute_msi }}"
 
 - name: Download the FreeRDP-WebConnect MSI
   win_get_url:
-  url: "{{ base_download_url }}/{{ freerdp_webconnect_msi }}"
-  dest: "{{ temp_dir }}\\{{ freerdp_webconnect_msi }}"
+    url: "{{ base_download_url }}/{{ freerdp_webconnect_msi }}"
+    dest: "{{ temp_dir }}\\{{ freerdp_webconnect_msi }}"
