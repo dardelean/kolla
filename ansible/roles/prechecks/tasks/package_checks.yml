@@ -1,4 +1,9 @@
 ---
+- name: Install pywinrm
+  shell: pip install "pywinrm>=0.2.2"
+  become: True
+  when: enable_hyperv | bool
+
 - name: Checking docker-py version
   command: python -c "import docker; print docker.__version__"
   register: result
