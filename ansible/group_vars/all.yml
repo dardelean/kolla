@@ -282,6 +282,7 @@ enable_telegraf: "no"
 enable_tempest: "no"
 enable_vmtp: "no"
 enable_watcher: "no"
+enable_hyperv: "no"
 
 ironic_keystone_user: "ironic"
 neutron_keystone_user: "neutron"
