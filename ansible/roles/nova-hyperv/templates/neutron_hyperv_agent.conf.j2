@@ -18,6 +18,7 @@ enable_security_group=true
 
 [oslo_messaging_rabbit]
 rabbit_host={% for host in groups['rabbitmq'] %}{{ hostvars[host]['ansible_' + hostvars[host]['api_interface']]['ipv4']['address'] }}{% if not loop.last %},{% endif %}{% endfor %}
+
 rabbit_port={{ rabbitmq_port }}
 rabbit_userid={{ rabbitmq_user }}
 rabbit_password={{ rabbitmq_password }}
